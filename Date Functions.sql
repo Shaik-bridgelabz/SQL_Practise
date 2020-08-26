@@ -1,13 +1,13 @@
-select curdate();   //display current date
+select curdate();   --display current date
 
-select curtime(); //display current time
+select curtime(); --display current time
 
-select current_timestamp();   //display cureent date and time
+select current_timestamp();   --display cureent date and time
 
-select curdate() + 0;   //displa in yyyymmdd format
+select curdate() + 0;   --display in yyyymmdd format
 
 DATE(expr)
-Extracts the date part of the date or datetime expression expr.
+--Extracts the date part of the date or datetime expression expr.
 Select DATE('2003-12-31 01:02:03');
 
 DATEDIFF(expr1,expr2)

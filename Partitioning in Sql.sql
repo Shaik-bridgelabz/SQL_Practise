@@ -1,3 +1,4 @@
+/*
 Database table Partitioning in SQL
 
 What is a database table partitioning?
@@ -21,6 +22,7 @@ Student_id                                Student_id
 Student_name                              Documents_image
 Address
 Email 
+Documents_image
 
 In above two tables. One is Student_master which contain unique studentid, studentname, address and email
 and here created another Student_detail table because one student have multiple documents images so that 
@@ -39,6 +41,7 @@ Partitioning column is usually a datetime column but all data types that are val
 index columns can be used as a partitioning column.
 
 Query to check if my sql version supports partitioning
+*/
 
 SELECT
 	PLUGIN_NAME as Name,
@@ -47,9 +50,9 @@ SELECT
     FROM INFORMATION_SCHEMA.PLUGINS
     WHERE PLUGIN_TYPE='STORAGE ENGINE';
 
-How to create horizontal Partition on a table
+--How to create horizontal Partition on a table
 
- CREATE TABLE members (
+ CREATE TABLE members1 (
     firstname VARCHAR(25) NOT NULL,
     lastname VARCHAR(25) NOT NULL,
     username VARCHAR(16) NOT NULL,
@@ -63,14 +66,16 @@ How to create horizontal Partition on a table
     PARTITION p3 VALUES LESS THAN (1990),
     PARTITION p4 VALUES LESS THAN MAXVALUE
     );
-	
+
+/*
 Types that can be used while Partitioning
 1. RANGE
 2. LIST
 3. HASH
 4. KEY
+*/
 
-LIST Example:
+--LIST Example:
 CREATE TABLE employees (
     id INT NOT NULL,
     fname VARCHAR(30),
@@ -87,7 +92,7 @@ PARTITION BY LIST(store_id) (
     PARTITION pCentral VALUES IN (7,8,15,16)
 );
 
-HASH Example:
+--HASH Example:
 
 CREATE TABLE employees (
     id INT NOT NULL,
@@ -98,10 +103,10 @@ CREATE TABLE employees (
     job_code INT,
     store_id INT
 )
-PARTITION BY HASH(store_id)
+PARTITION BY HASH(author)
 PARTITIONS 4;
 
-KEY Example:
+--KEY Example:
 
 CREATE TABLE k1 (
     id INT NOT NULL PRIMARY KEY,
@@ -110,7 +115,7 @@ CREATE TABLE k1 (
 PARTITION BY KEY()
 PARTITIONS 2;
 
-Query to check partitions and number of rows present in it:
+--Query to check partitions and number of rows present in it:
 
 SELECT PARTITION_NAME,TABLE_ROWS 
 FROM information_schema.partitions 
