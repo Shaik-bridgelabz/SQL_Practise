@@ -75,3 +75,20 @@ select user_name, count(present) from (select distinct(user_name), day(datetime)
 
 select user_name, count(present) from (select distinct(user_name), day(datetime) as present from logdata) d group by user_name having count(present)<3;
 
+
+-- get the minimum quantity of orders placed by users
+
+select min(quantity),user_id from orders group by user_id order by min(quantity) desc;
+
+-- get the total amount of order placed by particular user arrange by desc
+
+select sum(total_price) as Total,user_id from orders group by user_id order by sum(total_price) desc;
+
+-- get the maximum quantity of orders placed by users
+
+select max(quantity),user_id from orders group by user_id order by max(quantity) desc;
+
+-- get count of products in order placed by particular user
+
+select count(product_id),user_id from orders group by user_id order by count(product_id) desc;
+
