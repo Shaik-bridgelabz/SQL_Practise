@@ -27,3 +27,19 @@ select username,order_num from orders inner join user on orders.user_id = user.i
 DELETE user_id FROM users LEFT JOIN orders ON users.user_id = orders.user_id  WHERE order_num IS NULL;
 
 --.............................................................................................................................................................................................
+
+-- Insert using left outer join
+
+INSERT INTO  orders
+SELECT cart.product_id,cart.quantity,users.user_id,cart.price 
+FROM cart 
+LEFT JOIN users
+ON cart.user_id=users.user_id;
+
+--..............................................................................................................................................................................................
+
+--Update using left outer join
+
+UPDATE cart LEFT JOIN
+books ON cart.product_id = books.product_id 
+SET cart.quantity = cart.qauntity + 2;
