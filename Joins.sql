@@ -22,6 +22,11 @@ select username,order_num from orders inner join user on orders.user_id = user.i
 
 --.........................................................................................................................................................................................
 
+-- get all users number of orders with username
+
+select count(distinct(order_num)),user.username from orders full join user on user_id = user.id group by username;
+
+--.........................................................................................................................................................................................
 --Delete using left outer join
 
 DELETE user_id FROM users LEFT JOIN orders ON users.user_id = orders.user_id  WHERE order_num IS NULL;
