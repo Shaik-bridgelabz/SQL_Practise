@@ -71,3 +71,8 @@ DROP VIEW view_name;
 DROP VIEW user1vehicles;
 
 --.................................................................................................................
+
+create view getorders as
+select distinct(username),order_num from orders
+inner join user on
+orders.user_id=user.id;
